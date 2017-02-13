@@ -1,23 +1,22 @@
 var mysql = require("mysql");
 var password = require("./keys");
 
+var connection = mysql.createConnection({
+  port: 3306,
+  host: "localhost",
+  user: "root",
+  password: password,
+  database: "burgers_db"
+});
 
-module.exports = function connect () {
-	var connection = mysql.createConnection({
-	  host: "localhost",
-	  user: "root",
-	  password: password,
-	  database: "burgers_db"
-	});
+connection.connect(function(err) {
+  if (err) {
+    console.error("error connecting: " + err.stack);
+    return;
+  }
 
-	connection.connect(function(err) {
-	  if (err) {
-	    console.error("error connecting: " + err.stack);
-	    return;
-	  }
+  console.log("connected as id " + connection.threadId);
 
-	  console.log("connected as id " + connection.threadId);
+});
 
-	});
-
-};
+module.exports = connection;

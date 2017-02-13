@@ -1,3 +1,60 @@
-Setup the index.handlebars to have the template that Handlebars can render onto.
+<div class="container">
+  <div class="row">
+      <div class="col-md-4"></div>
+      <h1 class="col-md-4">Eat-Da-Burger!</h1>
+      <div class="col-md-4"></div>
+  </div>
+  <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4"><img id="burger_image" src="http://www.clker.com/cliparts/J/v/l/o/N/w/deluxe-burger.svg" /></div>
+      <div class="col-md-4"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2>Burgers You Want to Eat</h2>
+      <ul>
+        {{#each burgers}}
+          {{#unless this.devoured}}
+            <li>
+              {{this.burger_name}}
 
-Create a button in index.handlebars that will submit the user input into the database.
+              <form action="/{{this.id}}?_method=PUT" method="POST">
+                <input type="hidden" name="devoured" value="true">
+                <button type="submit">Devour it!</button>
+              </form>
+
+            </li>
+          {{/unless}}
+        {{/each}}
+      </ul>
+    </div>
+
+    <div class="col-md-6">
+      <h2>Burgers You Have Eaten!</h2>
+
+      <ul>
+        {{#each burgers}}
+          {{#if this.devoured}}
+            <li>
+              {{this.burger_name}}
+
+            </li>
+          {{/if}}
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+
+  <div class="col-md-6 col-md-offset-3">
+    <h2>Add a Burger</h2>
+    <form class="create-update-form" action="/" method="POST">
+
+      <div class="form-group">
+        <label for="burger">Burger: </label>
+        <input type="text" id="burger" name="burger_name">
+      </div>
+
+      <button type="submit">Add Burger</button>
+    </form>
+  </div>
+</div>
