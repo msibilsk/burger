@@ -1,4 +1,17 @@
+body {
+	background-color: #FFE761;
+}
+
 #burger_image {
-	width: 320px;
-	height: 240px;
+	width: 200px;
+	height: 170px;
+}
+
+.devour-btn {
+	display: inline;
+	margin-left: 5px;
+}
+
+h2, li, form {
+	margin-bottom: 15px;
 }

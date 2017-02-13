@@ -6,7 +6,7 @@
   </div>
   <div class="row">
       <div class="col-md-4"></div>
-      <div class="col-md-4"><img id="burger_image" src="http://www.clker.com/cliparts/J/v/l/o/N/w/deluxe-burger.svg" /></div>
+      <div class="col-md-4"><img id="burger_image" src="/assets/img/burger.png" /></div>
       <div class="col-md-4"></div>
   </div>
   <div class="row">
@@ -18,9 +18,9 @@
             <li>
               {{this.burger_name}}
 
-              <form action="/{{this.id}}?_method=PUT" method="POST">
-                <input type="hidden" name="devoured" value="true">
-                <button type="submit">Devour it!</button>
+              <form class="devour-btn" action="/{{this.id}}?_method=PUT" method="POST">
+                <input  type="hidden" name="devoured" value="true">
+                <button class="btn btn-primary" type="submit">Devour it!</button>
               </form>
 
             </li>
@@ -44,17 +44,18 @@
       </ul>
     </div>
   </div>
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <h2>Add a Burger</h2>
+      <form class="create-update-form" action="/" method="POST">
 
-  <div class="col-md-6 col-md-offset-3">
-    <h2>Add a Burger</h2>
-    <form class="create-update-form" action="/" method="POST">
+        <div class="form-group">
+          <label for="burger">Burger Name: </label>
+          <input type="text" id="burger" name="burger_name">
+        </div>
 
-      <div class="form-group">
-        <label for="burger">Burger: </label>
-        <input type="text" id="burger" name="burger_name">
-      </div>
-
-      <button type="submit">Add Burger</button>
-    </form>
+        <button class="btn btn-primary" type="submit">Add Burger</button>
+      </form>
+    </div>
   </div>
 </div>
