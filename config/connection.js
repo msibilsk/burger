@@ -1,5 +1,4 @@
 var mysql = require("mysql");
-var password = require("./keys");
 
 var connection = mysql.createConnection({
   host: "us-cdbr-iron-east-04.cleardb.net",
